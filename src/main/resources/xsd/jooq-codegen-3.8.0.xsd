@@ -1,0 +1,183 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema"
+        targetNamespace="http://www.jooq.org/xsd/jooq-codegen-3.8.0.xsd"
+        elementFormDefault="qualified">
+
+    <complexType name="Generate">
+        <all>
+            <!--
+              Primary key / foreign key relations should be generated and used.
+              This is a prerequisite for various advanced features
+              -->
+            <element name="relations" type="boolean" default="true" minOccurs="0" maxOccurs="1"/>
+
+            <!-- Generate deprecated code for backwards compatibility -->
+            <element name="deprecated" type="boolean" default="true" minOccurs="0" maxOccurs="1"/>
+
+            <element name="propertiesConstants" type="boolean" default="false" minOccurs="0" maxOccurs="1"/>
+
+            <element name="jaxbAnnotations" type="boolean" default="false" minOccurs="0" maxOccurs="1"/>
+
+            <!--
+              Do not reuse this property. It is deprecated as of jOOQ 3.3.0
+              -->
+            <element name="instanceFields" type="boolean" default="true" minOccurs="0" maxOccurs="1"/>
+
+            <!--
+              Generate the javax.annotation.Generated annotation to indicate
+              jOOQ version used for source code
+              -->
+            <element name="generatedAnnotation" type="boolean" default="true" minOccurs="0" maxOccurs="1"/>
+
+            <!--
+              Generate TableRecord classes. Disable this when you don't
+              need the additional type-safety
+              -->
+            <element name="records" type="boolean" default="true" minOccurs="0" maxOccurs="1"/>
+
+            <!--
+              Generate POJOs for usage of the ResultQuery.fetchInto(Class) API
+              -->
+            <element name="pojos" type="boolean" default="false" minOccurs="0" maxOccurs="1"/>
+
+            <!--
+              Generate basic equals() and hashCode() methods in POJOs
+              -->
+            <element name="pojosEqualsAndHashCode" type="boolean" default="false" minOccurs="0" maxOccurs="1"/>
+
+            <!--
+              Generate basic toString() methods in POJOs
+              -->
+            <element name="pojosToString" type="boolean" default="true" minOccurs="0" maxOccurs="1"/>
+
+            <!--
+              Generate immutable POJOs for usage of the ResultQuery.fetchInto(Class) API
+              This overrides any value set in <pojos/>
+              -->
+            <element name="immutablePojos" type="boolean" default="false" minOccurs="0" maxOccurs="1"/>
+
+            <!--
+              Generate interfaces that will be implemented by records and/or pojos.
+              You can also use these interfaces in Record.into(Class<?>) and similar
+              methods, to let jOOQ return proxy objects for them.
+              -->
+            <element name="interfaces" type="boolean" default="false" minOccurs="0" maxOccurs="1"/>
+
+            <!--
+              Generate DAOs in addition to POJO classes
+              -->
+            <element name="daos" type="boolean" default="false" minOccurs="0" maxOccurs="1"/>
+
+            <!--
+              Annotate POJOs and Records with JPA annotations for increased
+              compatibility and better integration with JPA/Hibernate, etc
+              -->
+            <element name="jpaAnnotations" type="boolean" default="false" minOccurs="0" maxOccurs="1"/>
+
+            <!--
+              Annotate POJOs and Records with JSR-303 validation annotations
+              -->
+            <element name="validationAnnotations" type="boolean" default="false" minOccurs="0" maxOccurs="1"/>
+
+            <!--
+              Annotate DAOs with useful spring annotations such as @Repository or @Autowired
+              -->
+            <element name="springAnnotations" type="boolean" default="false" minOccurs="0" maxOccurs="1"/>
+
+            <!--
+              Allow to turn off the generation of ALL global object references, which include
+
+              - Tables.java
+              - Sequences.java
+              - UDTs.java
+              - Routines.java
+
+              Turning off the generation of the above files may be necessary for very
+              large schemas, which exceed the amount of allowed constants in a class's
+              constant pool (64k) or, whose static initialiser would exceed 64k of
+              byte code.
+
+              Setting this flag to false will force all other global reference flags to be false:
+
+              - <globalTableReferences/>
+              - <globalSequenceReferences/>
+              - <globalUDTReferences/>
+              - <globalRoutineReferences/>
+              -->
+            <element name="globalObjectReferences" type="boolean" default="true" minOccurs="0" maxOccurs="1"/>
+
+            <!--
+              Allow to turn off the generation of global catalog references in Catalogs.java
+              -->
+            <element name="globalCatalogReferences" type="boolean" default="true" minOccurs="0" maxOccurs="1"/>
+
+            <!--
+              Allow to turn off the generation of global schema references in Schemas.java and each catalog
+              -->
+            <element name="globalSchemaReferences" type="boolean" default="true" minOccurs="0" maxOccurs="1"/>
+
+            <!--
+              Allow to turn off the generation of global table references in Tables.java and each schema
+              -->
+            <element name="globalTableReferences" type="boolean" default="true" minOccurs="0" maxOccurs="1"/>
+
+            <!--
+              Allow to turn off the generation of global table references in Sequences.java
+              -->
+            <element name="globalSequenceReferences" type="boolean" default="true" minOccurs="0" maxOccurs="1"/>
+
+            <!--
+              Allow to turn off the generation of global table references in UDTs.java
+              -->
+            <element name="globalUDTReferences" type="boolean" default="true" minOccurs="0" maxOccurs="1"/>
+
+            <!--
+              Allow to turn off the generation of global table references in Routines.java
+              -->
+            <element name="globalRoutineReferences" type="boolean" default="true" minOccurs="0" maxOccurs="1"/>
+
+            <!--
+              Allow to turn off the generation of global queue references in Queues.java
+              -->
+            <element name="globalQueueReferences" type="boolean" default="true" minOccurs="0" maxOccurs="1"/>
+
+            <!--
+              Allow to turn off the generation of global link references in Links.java
+              -->
+            <element name="globalLinkReferences" type="boolean" default="true" minOccurs="0" maxOccurs="1"/>
+
+            <!--
+              Allow to turn off the generation of queue related code
+              -->
+            <element name="queues" type="boolean" default="true" minOccurs="0" maxOccurs="1"/>
+
+            <!--
+              Allow to turn off the generation of link related code
+              -->
+            <element name="links" type="boolean" default="true" minOccurs="0" maxOccurs="1"/>
+
+            <!--
+              Generate fluent setters in
+
+              - records
+              - pojos
+              - interfaces
+
+              Fluent setters are against the JavaBeans specification, but can be quite
+              useful to those users who do not depend on EL, JSP, JSF, etc.
+              -->
+            <element name="fluentSetters" type="boolean" default="false" minOccurs="0" maxOccurs="1"/>
+
+            <!--
+              A regular expression matching all the types in generated code that should
+              be fully qualified.
+
+              This can be useful if you have a database object that generates a String
+              class, and you want to avoid naming clashes with the java.lang package
+              by specifying <fullyQualifiedTypes>java\.lang\..*</fullyQualifiedTypes>
+              -->
+            <element name="fullyQualifiedTypes" type="string" default="" minOccurs="0" maxOccurs="1"/>
+        </all>
+    </complexType>
+
+</schema>
