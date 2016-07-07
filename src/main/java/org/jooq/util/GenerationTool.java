@@ -401,24 +401,33 @@ public class GenerationTool {
             // [#1394] The <generate/> element should be optional
             if (g.getGenerate() == null)
                 g.setGenerate(new Generate());
-            if (generator instanceof ExtendedGenerator) {
-                if (g.getGenerate().isPropertiesConstants() != null)
-                    ((ExtendedGenerator) generator).setGeneratePropertiesConstants(g.getGenerate().isPropertiesConstants());
-                if (g.getGenerate().isJaxbAnnotations() != null)
-                    ((ExtendedGenerator) generator).setGenerateJaxbAnnotations(g.getGenerate().isJaxbAnnotations());
-            }
-            if (g.getGenerate().isRelations() != null)
+            if (g.getGenerate().isRelations() != null) {
                 generator.setGenerateRelations(g.getGenerate().isRelations());
-            if (g.getGenerate().isDeprecated() != null)
+            }
+            if (g.getGenerate().isDeprecated() != null) {
                 generator.setGenerateDeprecated(g.getGenerate().isDeprecated());
-            if (g.getGenerate().isInstanceFields() != null)
+            }
+            if (g.getGenerate().isInstanceFields() != null) {
                 generator.setGenerateInstanceFields(g.getGenerate().isInstanceFields());
-            if (g.getGenerate().isGeneratedAnnotation() != null)
+            }
+            if (g.getGenerate().isGeneratedAnnotation() != null) {
                 generator.setGenerateGeneratedAnnotation(g.getGenerate().isGeneratedAnnotation());
-            if (g.getGenerate().isRecords() != null)
+            }
+            if (g.getGenerate().isRecords() != null) {
                 generator.setGenerateRecords(g.getGenerate().isRecords());
+            }
             if (g.getGenerate().isPojos() != null)
                 generator.setGeneratePojos(g.getGenerate().isPojos());
+
+            if (generator instanceof ExtendedGenerator) {
+                if (g.getGenerate().isPropertiesConstants() != null) {
+                    ((ExtendedGenerator) generator).setGeneratePropertiesConstants(g.getGenerate().isPropertiesConstants());
+                }
+                if (g.getGenerate().isJaxbAnnotations() != null) {
+                    ((ExtendedGenerator) generator).setGenerateJaxbAnnotations(g.getGenerate().isJaxbAnnotations());
+                }
+            }
+
             if (g.getGenerate().isImmutablePojos() != null)
                 generator.setGenerateImmutablePojos(g.getGenerate().isImmutablePojos());
             if (g.getGenerate().isInterfaces() != null)

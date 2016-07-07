@@ -37,9 +37,11 @@ Small extension of jOOQ's code generation features
 3. In `generate` section declare:
 
     ```xml
+      <pojos>true</pojos>
       <propertiesConstants>true</propertiesConstants>
       <jaxbAnnotations>true</jaxbAnnotations>
     ```
+    *Note: `<pojos>true</pojos>` must be set directly or forced by declaring `<daos>true</daos>` (in case daos are required)* 
 
 4. Finally, attach an extension dependency to plugin:
 
@@ -83,13 +85,7 @@ Small extension of jOOQ's code generation features
                   <inputSchema>db_schema_name</inputSchema>
                 </database>
                 <generate>
-                  <interfaces>true</interfaces>
-                  <daos>true</daos>
-                  <springAnnotations>true</springAnnotations>
-                  <fluentSetters>true</fluentSetters>
-                  <pojosToString>true</pojosToString>
-                  <pojosEqualsAndHashCode>true</pojosEqualsAndHashCode>
-                  <jpaAnnotations>true</jpaAnnotations>
+                  <pojos>true</pojos>
                   <propertiesConstants>true</propertiesConstants>
                   <jaxbAnnotations>true</jaxbAnnotations>
                 </generate>
