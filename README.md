@@ -2,7 +2,7 @@
 Small extension of jOOQ's code generation features
 
 ##Latest features
-See https://github.com/regulate/jooq-codegen-pojo-extension/releases/tag/0.0.1
+See this [link](https://github.com/regulate/jooq-codegen-pojo-extension/releases/tag/0.0.1)
 
 ##Requirements
 * Java 1.7
