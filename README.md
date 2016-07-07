@@ -1,9 +1,12 @@
 # jooq-codegen-pojo-extension
 Small extension of jOOQ's code generation features
+
+##Latest features
+See https://github.com/regulate/jooq-codegen-pojo-extension/releases/tag/0.0.1
+
 ##Requirements
 * Java 1.7
 * [jOOQ](http://www.jooq.org/) 3.8.2
-
 *Note: at this moment tested only with jOOQ's 3.8.2 version*
 
 ## Usage
